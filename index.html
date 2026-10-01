@@ -1,44 +1,390 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OpenVisionBanana</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Open Vision Banana is a fully open recipe for adapting pretrained image generators into unified multi-task visual perception systems.">
+  <meta name="keywords" content="Open Vision Banana, generative visual perception, image-to-image models, segmentation, depth estimation, surface normals, computer vision">
+  <meta name="theme-color" content="#ffca28">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+  <meta property="og:title" content="Open Vision Banana">
+  <meta property="og:description" content="A fully open recipe for generative visual perception.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://openvisionbanana.github.io/">
+  <meta property="og:image" content="https://openvisionbanana.github.io/static/images/ovb-logo.png">
 
-    .container {
-      max-width: 600px;
-      padding: 40px;
-    }
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Open Vision Banana">
+  <meta name="twitter:description" content="A fully open recipe for generative visual perception.">
+  <meta name="twitter:image" content="https://openvisionbanana.github.io/static/images/ovb-logo.png">
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.1rem;
-      color: #666;
-    }
-  </style>
+  <title>Open Vision Banana</title>
+  <link rel="icon" href="static/images/ovb-logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/styles.css?v=20261001-8">
 </head>
-
 <body>
-  <div class="container">
-    <h1>OpenVisionBanana</h1>
-    <p>Website coming soon.</p>
-  </div>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" aria-label="Primary navigation">
+    <div class="nav-shell">
+      <a class="brand" href="#top" aria-label="Open Vision Banana home">
+        <img src="static/images/ovb-logo.png" alt="" width="34" height="38">
+        <span>Open Vision Banana</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#approach">Tasks</a>
+        <a href="#results">Results</a>
+        <a href="#scaling">Scaling</a>
+        <a href="#findings">Findings</a>
+        <a href="#release">Release</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-glow hero-glow-left" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Preprint · 2026</div>
+          <h1><span class="title-open">Open Vision</span> <span class="title-banana">Banana</span></h1>
+          <p class="subtitle">A Fully Open Recipe for<br class="desktop-break"> Generative Visual Perception</p>
+
+          <div class="authors" aria-label="Authors">
+            <a href="https://arpit-jadon.github.io/" target="_blank" rel="noreferrer">Arpit Jadon<sup>1,2,*</sup></a>
+            <a href="https://vpariza.github.io/" target="_blank" rel="noreferrer">Valentinos Pariza<sup>1,*</sup></a>
+            <a href="https://jonaruthardt.github.io/" target="_blank" rel="noreferrer">Jona Ruthardt<sup>1</sup></a>
+            <a href="https://ryosuke-yamada.github.io/" target="_blank" rel="noreferrer">Ryousuke Yamada<sup>1,3</sup></a>
+            <a href="https://akoepke.github.io/" target="_blank" rel="noreferrer">A. Sophia Koepke<sup>5,6</sup></a>
+            <a href="https://abursuc.github.io/" target="_blank" rel="noreferrer">Andrei Bursuc<sup>4</sup></a>
+            <a href="https://yukimasano.github.io/" target="_blank" rel="noreferrer">Yuki M. Asano<sup>1</sup></a>
+          </div>
+
+          <div class="affiliations">
+            <span><sup>1</sup>University of Technology Nuremberg</span>
+            <span><sup>2</sup>DLR</span>
+            <span><sup>3</sup>AIST</span>
+            <span><sup>4</sup>valeo.ai</span>
+            <span><sup>5</sup>Technical University of Munich</span>
+            <span><sup>6</sup>University of Tübingen</span>
+          </div>
+          <p class="contribution-note"><sup>*</sup>Equal contribution</p>
+
+          <div class="publication-links" aria-label="Project resources">
+            <span class="button button-muted" aria-disabled="true" title="Updated manuscript in preparation">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 13h6M9 17h6M9 9h2"/></svg>
+              Paper <small>Soon</small>
+            </span>
+            <a class="button button-dark" href="https://github.com/OpenVisionBanana/OpenVisionBanana" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>
+              Code
+            </a>
+            <a class="button button-dark" href="https://huggingface.co/FunAILab/Open-Vision-Banana" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 7l8-4 8 4-8 4zM4 7v10l8 4 8-4V7M8 9v10"/></svg>
+              Models
+            </a>
+          </div>
+        </div>
+
+        <div class="hero-art" aria-label="Open Vision Banana mascot">
+          <div class="hero-art-disc"></div>
+          <div class="hero-art-ring"></div>
+          <img src="static/images/ovb-logo.png" alt="A banana character looking through a magnifying glass" width="782" height="880" data-mascot role="button" tabindex="0" title="Open Vision Banana">
+          <span class="spark spark-one">✦</span>
+          <span class="spark spark-two">✦</span>
+          <span class="color-chip chip-one"></span>
+          <span class="color-chip chip-two"></span>
+          <span class="color-chip chip-three"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tldr-section">
+      <div class="container narrow">
+        <p class="section-kicker">TL;DR</p>
+        <h2>Turn an image generator into a<br>general-purpose perception model.</h2>
+        <p class="lead">
+          Open Vision Banana fine-tunes open-weight FLUX.2 Klein 4B and 9B image generators on public data. The same model generates an RGB image for segmentation or geometry, then a deterministic decoder reads out the prediction. No task-specific prediction heads or losses are added.
+        </p>
+        <div class="stat-row" aria-label="Evaluation scope">
+          <div class="stat"><strong>2</strong><span>open base model sizes</span></div>
+          <div class="stat"><strong>6</strong><span>perception tasks</span></div>
+          <div class="stat"><strong>0</strong><span>task-specific heads</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">The unified interface</p>
+          <h2>Perception, expressed as image generation.</h2>
+          <p>Every OVB checkpoint serves multiple tasks through the same image-generation interface. Choose a task to explore real inputs and predictions from the paper. Instructions are summarized; mask colors encode labels. The editing tab shows a capability retained after perception training.</p>
+        </div>
+
+        <div class="task-demo" data-task-demo>
+          <div class="task-tabs" role="tablist" aria-label="Example task">
+            <button class="task-tab is-active" type="button" role="tab" id="task-tab-semantic" aria-controls="task-panel" aria-selected="true" tabindex="0" data-task="semantic">Semantic</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-instance" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="instance">Instance</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-referring" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="referring">Referring</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-reasoning" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="reasoning">Reasoning</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-depth" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="depth">Depth</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-normals" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="normals">Normals</button>
+            <button class="task-tab" type="button" role="tab" id="task-tab-editing" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="editing">Editing</button>
+          </div>
+
+          <div id="task-panel" role="tabpanel" aria-labelledby="task-tab-semantic" tabindex="0">
+            <div class="task-pipeline">
+              <article class="pipeline-card input-card">
+                <span class="card-label">Input image</span>
+                <img class="task-image" src="static/images/paper/city-input.webp" alt="Cityscapes street scene with parked cars" data-input-image>
+              </article>
+
+              <div class="pipeline-arrow">
+                <span class="prompt-label">Task instruction · summarized</span>
+                <span class="prompt-bubble" data-prompt>Paint the requested Cityscapes classes with their assigned colors.</span>
+                <span class="model-pill">OVB image generator</span>
+                <svg viewBox="0 0 88 24" aria-hidden="true"><path d="M1 12h78M70 3l9 9-9 9"/></svg>
+                <div class="decode-step" aria-label="Prediction readout">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66M20 4v6h-6"/></svg>
+                  <strong>Readout</strong>
+                  <span data-decoder>nearest prompted color → class label</span>
+                </div>
+              </div>
+
+              <article class="pipeline-card output-card">
+                <div class="card-heading">
+                  <span class="card-label" data-output-label>Decoded semantic mask</span>
+                  <span class="comparison-hint">Hover to reveal input</span>
+                </div>
+                <div class="prediction-comparison" data-prediction-comparison>
+                  <img class="task-image comparison-original" src="static/images/paper/city-input.webp" alt="" aria-hidden="true" data-comparison-image>
+                  <img class="task-image comparison-prediction" src="static/images/paper/city-prediction.png" alt="Color-coded semantic mask of the street, buildings, cars, and sky" data-output-image>
+                </div>
+              </article>
+            </div>
+            <div class="task-example-footer">
+              <div aria-live="polite"><strong data-example-title>Semantic segmentation · Cityscapes</strong><span data-example-caption>OVB 9B · one prompted legend; single-pass decoded mask.</span></div>
+              <div class="task-example-nav" data-example-nav aria-label="Select example">
+                <button type="button" data-previous-example aria-label="Previous example">←</button>
+                <span data-example-count>1 / 3</span>
+                <button type="button" data-next-example aria-label="Next example">→</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft results-section" id="results">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Measured performance</p>
+          <h2>A shared model for six perception tasks.</h2>
+          <p>Selected main-paper results compare OVB with Vision Banana and specialist models across segmentation, relative depth, and surface normals. Scores include model sizes and inference details; each OVB checkpoint serves multiple tasks.</p>
+        </div>
+
+        <div class="benchmark-comparison" aria-labelledby="comparison-heading">
+          <div class="comparison-heading">
+            <h3 id="comparison-heading">How does OVB compare?</h3>
+            <p>Selected main-paper scores include the model size and inference setup. OVB's 20-pass Cityscapes score exceeds the reported Vision Banana and SAM 3 scores. Across the other segmentation tasks, it exceeds some specialist baselines while trailing Vision Banana.</p>
+          </div>
+          <div class="result-table-wrap" role="region" aria-label="Segmentation, depth, and surface-normal benchmark comparisons" tabindex="0">
+            <table class="result-table comparison-table">
+              <caption>Selected comparisons across six perception tasks from the main paper; inference setups differ</caption>
+              <thead><tr><th scope="col">Task &amp; benchmark</th><th scope="col" class="ovb-column">Open Vision Banana</th><th scope="col">Vision Banana</th><th scope="col">Selected specialists</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong>74.9</strong><small>9B · 20-pass vote<br>69.2 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span><span>X-Decoder <b>52.0</b></span></td></tr>
+                <tr><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>68.5</strong><small>9B<br>Original expressions</small></td><td><strong>73.8</strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
+                <tr><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>73.6</strong><small>4B<br>+ Qwen3-VL-32B-Thinking</small></td><td><strong>79.3</strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
+                <tr><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>38.9</strong><small>9B · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong>47.5</strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
+                <tr><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong>96.7</strong><small>9B<br>Per-image log-depth alignment</small></td><td>—</td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
+                <tr><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong>13.34</strong><small>9B<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-note">Higher scores are better, except for surface-normal mean error, where lower is better. Segmentation baselines and Vision Banana's rounded normal error come from the <a href="https://arxiv.org/html/2604.20329" target="_blank" rel="noopener noreferrer">Vision Banana report, Tables 2–5 and 7</a>; specialist geometry scores come from the <a href="https://arxiv.org/html/2609.08084" target="_blank" rel="noopener noreferrer">Marigold V2 report, Tables 1 and 9</a>. Models differ in training data, readout, inference budget, and language-model dependencies; multi-pass results use additional inference. Geometry evaluation protocols may differ. Dashes indicate omitted scores. Full evaluation details will accompany the updated manuscript.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section" id="scaling">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">A central finding</p>
+          <h2>Test-Time Scaling for Vision Models</h2>
+          <p>The model often finds the right regions but assigns the wrong prompted colors. OVB repeats the same image with fresh class-to-color legends, decodes each output into common class IDs, then takes a pixel-wise majority vote. These extra inference passes improve segmentation accuracy, with no additional training.</p>
+        </div>
+        <ol class="scaling-flow" aria-label="Test-time scaling procedure">
+          <li>
+            <div class="scaling-step-heading"><span class="scaling-step-number" aria-hidden="true">1</span><h3>Change the color legend</h3></div>
+            <p>Request the same categories with different color assignments.</p>
+            <div class="scaling-example" aria-label="Illustrative color assignments">
+              <div class="legend-row"><span class="pass-label">Pass 1</span><span class="legend-label"><i class="legend-purple" aria-hidden="true"></i>Road</span><span class="legend-label"><i class="legend-yellow" aria-hidden="true"></i>Car</span></div>
+              <div class="legend-row"><span class="pass-label">Pass 2</span><span class="legend-label"><i class="legend-yellow" aria-hidden="true"></i>Road</span><span class="legend-label"><i class="legend-purple" aria-hidden="true"></i>Car</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="scaling-step-heading"><span class="scaling-step-number" aria-hidden="true">2</span><h3>Predict and decode</h3></div>
+            <p>The same OVB model generates each image. Decode colors into common class labels.</p>
+            <div class="scaling-example" aria-label="Both colors decode to the road category in their respective passes">
+              <div class="decode-row"><span class="legend-label"><i class="legend-purple" aria-hidden="true"></i>Purple</span><span aria-hidden="true">→</span><strong>Road</strong><span class="pass-label">Pass 1</span></div>
+              <div class="decode-row"><span class="legend-label"><i class="legend-yellow" aria-hidden="true"></i>Yellow</span><span aria-hidden="true">→</span><strong>Road</strong><span class="pass-label">Pass 2</span></div>
+            </div>
+          </li>
+          <li>
+            <div class="scaling-step-heading"><span class="scaling-step-number" aria-hidden="true">3</span><h3>Vote on the labels</h3></div>
+            <p>For each pixel, keep the category selected by the most decoded predictions.</p>
+            <div class="scaling-example vote-example" aria-label="An illustrative pixel with two road votes and one car vote is assigned to road">
+              <div class="vote-labels"><span>Road</span><span>Road</span><span>Car</span></div>
+              <div class="vote-result"><span>Majority</span><span aria-hidden="true">→</span><strong>Road</strong></div>
+            </div>
+          </li>
+        </ol>
+        <div class="scaling-grid">
+          <div class="scaling-stat"><span>Cityscapes · 9B</span><strong>65.6 <b>→</b> 73.9</strong><small>mIoU, mean single pass → 20-pass vote</small></div>
+          <div class="scaling-stat"><span>COCO-Object · 9B</span><strong>37.5 <b>→</b> 51.6</strong><small>mIoU, mean single pass → 90-pass vote</small></div>
+        </div>
+        <div class="scaling-explain">
+          <figure><img src="static/images/paper/cityscapes-scaling.webp" alt="Cityscapes mIoU climbs as predictions from more color legends are combined, while individual pass scores stay approximately flat" loading="lazy"><figcaption>Cityscapes repeat sweep</figcaption></figure>
+          <div><h3>The gain comes from correcting color binding.</h3><p>On Cityscapes, the 9B model's single-pass score is 65.6 mIoU, yet an oracle that relabels its predicted regions reaches 85.9. Voting raises measured accuracy while the oracle region score barely changes. On COCO-Object, wrong-class foreground pixels fall from 19.0% to 10.3% over 90 passes.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-soft findings-section" id="findings">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">WHAT MAKES THE RECIPE WORK</p>
+          <h2>Designing Generative Perception Models</h2>
+          <p>The paper varies target encoding, prompts, training data, and model adaptation under controlled settings. Three takeaways matter most for applying this approach.</p>
+        </div>
+        <div class="finding-grid">
+          <article class="finding-card"><span class="finding-index">01</span><div class="finding-copy"><span class="finding-factor">RGB interface</span><h3>How labels map to colors matters.</h3><p>A model trained with one fixed Cityscapes legend scores 54.3 mIoU under that legend, but only 7.1 when the colors change at inference. Randomized assignments teach it to follow the prompt; a well-separated 64-color palette provides the best overall trade-off in the palette study.</p></div></article>
+          <article class="finding-card"><span class="finding-index">02</span><div class="finding-copy"><span class="finding-factor">Multi-task recipe</span><h3>Balance performance across tasks.</h3><p>Prompt and target encoding choices, data composition, replay, and training duration affect depth, normals, segmentation, and retained generative abilities differently. More data or longer training is not uniformly better, and gains on one metric can come at the expense of another. The final recipe is a multi-task compromise, selected across tasks rather than on a single benchmark.</p></div></article>
+          <article class="finding-card"><span class="finding-index">03</span><div class="finding-copy"><span class="finding-factor">Model adaptation</span><h3>Adapt more of the backbone.</h3><p>Tuning only the last few transformer blocks performs poorly; strong perception requires adapting a substantial fraction of the backbone. Performance improves markedly as more of the transformer is adapted, though depth, normals, and segmentation favor slightly different adaptation scopes.</p></div></article>
+        </div>
+        <details class="research-disclosure recipe-disclosure">
+          <summary><span class="disclosure-label">Explore the complete recipe and architecture</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
+          <div class="disclosure-content">
+            <figure class="paper-figure">
+              <img src="static/images/ovb-overview.webp" alt="Overview of the Open Vision Banana research questions, data, generator, RGB output and decoder" width="6256" height="2195" loading="lazy">
+              <figcaption><strong>The complete recipe.</strong> Public training data, target encoding, prompts, model adaptation, and inference-time readout are evaluated as a coupled system. Figure from the current main-paper draft.</figcaption>
+            </figure>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section class="section geometry-section" id="geometry">
+      <div class="container">
+        <div class="section-heading">
+          <p class="section-kicker">Where the limits show</p>
+          <h2>Geometry is useful, but domain-dependent.</h2>
+          <p>OVB predicts relative inverse depth and camera-space surface normals through RGB images. Per-image depth alignment enables evaluation of relative scene structure, while performance on both tasks varies with the domain and training data.</p>
+        </div>
+        <div class="geometry-summary">
+          <article><h3>Relative depth</h3><p>OVB recovers scene structure on NYUv2 and DIODE. Evaluation uses per-image alignment; aligned scores do not imply absolute distances in meters.</p></article>
+          <article><h3>Surface normals</h3><p>OVB predicts camera-space surface orientation, with competitive selected results on NYUv2 and Sintel. Predictions can still contain artifacts.</p></article>
+        </div>
+        <figure class="geometry-examples">
+          <div class="geometry-example-row" style="--crop-y: 43; --crop-height: 330">
+            <h3>Relative depth · NYUv2</h3>
+            <div class="geometry-example-grid">
+              <div><span>Input</span><div class="geometry-crop" style="--crop-x: 46"><img src="static/images/paper/geometry-comparison.webp" alt="NYUv2 bedroom with a bed in the foreground" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>Ground truth</span><div class="geometry-crop" style="--crop-x: 496"><img src="static/images/paper/geometry-comparison.webp" alt="Reference relative depth for the bedroom" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>OVB 9B</span><div class="geometry-crop" style="--crop-x: 1396"><img src="static/images/paper/geometry-comparison.webp" alt="OVB 9B relative-depth prediction for the bedroom" width="2736" height="831" loading="lazy"></div></div>
+            </div>
+          </div>
+          <div class="geometry-example-row" style="--crop-y: 500; --crop-height: 326">
+            <h3>Surface normals · ScanNet</h3>
+            <div class="geometry-example-grid">
+              <div><span>Input</span><div class="geometry-crop" style="--crop-x: 46"><img src="static/images/paper/geometry-comparison.webp" alt="ScanNet scene with a cylindrical bin beside cabinetry" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>Ground truth</span><div class="geometry-crop" style="--crop-x: 496"><img src="static/images/paper/geometry-comparison.webp" alt="Reference surface normals for the bin and surrounding surfaces" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>OVB 9B · zero-shot</span><div class="geometry-crop" style="--crop-x: 946"><img src="static/images/paper/geometry-comparison.webp" alt="Zero-shot OVB 9B surface-normal prediction for the bin and surrounding surfaces" width="2736" height="831" loading="lazy"></div></div>
+            </div>
+          </div>
+          <figcaption>Representative main-paper examples. Colors show relative depth or surface orientation. The ScanNet prediction uses the zero-shot OVB 9B model.</figcaption>
+        </figure>
+        <div class="geometry-comparisons">
+          <div class="comparison-heading">
+            <h3>Selected geometry results</h3>
+            <p>Higher δ₁ is better for relative depth; lower mean angular error is better for surface normals. OVB's depth scores use per-image log-depth alignment.</p>
+          </div>
+          <div class="result-table-wrap" role="region" aria-label="Depth and surface-normal benchmark comparisons" tabindex="0">
+            <table class="result-table geometry-table">
+              <caption>Selected geometry comparisons: relative depth on NYUv2 and DIODE, surface normals on NYUv2 and Sintel; protocols may differ</caption>
+              <thead>
+                <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="2">Relative depth · δ₁ (%) ↑</th><th scope="colgroup" colspan="2">Surface normals · mean error (°) ↓</th></tr>
+                <tr><th scope="col">NYUv2</th><th scope="col">DIODE</th><th scope="col">NYUv2</th><th scope="col">Sintel</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Marigold V2 </th><td>98.0</td><td>97.1</td><td>16.6</td><td>28.7</td></tr>
+                <tr><th scope="row">Lotus-2 </th><td>97.6</td><td>95.5</td><td>16.9</td><td>30.3</td></tr>
+                <tr><th scope="row">DSINE </th><td>—</td><td>—</td><td>16.4</td><td>34.9</td></tr>
+                <tr><th scope="row">Vision Banana </th><td>—</td><td>—</td><td>17.8</td><td>—</td></tr>
+                <tr class="ovb-row"><th scope="row">Open Vision Banana 9B</th><td class="selected-score"><strong>96.7</strong></td><td class="selected-score"><strong>92.1</strong></td><td class="selected-score"><strong>13.34</strong></td><td class="selected-score"><strong>28.14</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="result-note">Published specialist values come from the <a href="https://arxiv.org/html/2609.08084" target="_blank" rel="noopener noreferrer">Marigold V2 report, Tables 1 and 9</a>; Vision Banana's normal error is rounded from <a href="https://arxiv.org/html/2604.20329" target="_blank" rel="noopener noreferrer">its report, Table 7</a>. Evaluation protocols may differ. Dashes indicate scores omitted from this comparison; full results are in the paper.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section openness-section" id="release">
+      <div class="container openness-grid">
+        <div>
+          <p class="section-kicker">Open by construction</p>
+          <h2>A recipe others can inspect, reproduce, and extend.</h2>
+          <p class="lead-small">OVB uses public base models and datasets. All important resources are linked here.</p>
+        </div>
+        <div class="release-list">
+          <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Model weights</strong><small>Hugging Face model repository</small></p><a href="https://huggingface.co/FunAILab/Open-Vision-Banana" target="_blank" rel="noopener noreferrer">View models ↗</a></div>
+          <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Code repository</strong><small>Open Vision Banana on GitHub</small></p><a href="https://github.com/OpenVisionBanana/OpenVisionBanana" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
+          <div><span class="release-check">→</span><p><strong>Data pipeline</strong><small>Construction and preprocessing</small></p><em>Planned</em></div>
+          <div><span class="release-check">→</span><p><strong>Evaluation harness</strong><small>Readouts, protocols, and metrics</small></p><em>Planned</em></div>
+          <div><span class="release-check">→</span><p><strong>Updated paper</strong><small>Current manuscript in preparation</small></p><em>Planned</em></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section citation-section" id="citation">
+      <div class="container narrow">
+        <div class="section-heading centered">
+          <p class="section-kicker">Citation</p>
+          <h2>Using Open Vision Banana?</h2>
+          <p>If you use OVB in your work, please cite the project. This provisional citation will be updated when the manuscript is released.</p>
+        </div>
+        <div class="bibtex-shell">
+          <button class="copy-button" type="button" data-copy-bib aria-label="Copy BibTeX">Copy</button>
+          <pre id="bibtex"><code>@misc{jadon2026openvisionbanana,
+  title   = {Open Vision Banana: A Fully Open Recipe for Generative Visual Perception},
+  author  = {Jadon, Arpit and Pariza, Valentinos and Ruthardt, Jona and
+             Yamada, Ryousuke and Koepke, A. Sophia and Bursuc, Andrei and Asano, Yuki M.},
+  year    = {2026},
+  note    = {Manuscript in preparation}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <img src="static/images/ovb-logo.png" alt="" width="40" height="45">
+        <span><strong>Open Vision Banana</strong><small>A fully open recipe for generative visual perception.</small></span>
+      </div>
+      <p>Inspired by the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noreferrer">Academic Project Page Template</a>.<br>Project page · 2026</p>
+    </div>
+  </footer>
+
+  <script src="static/script.js?v=20261001-7"></script>
 </body>
 </html>
