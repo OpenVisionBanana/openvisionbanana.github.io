@@ -4,7 +4,6 @@ const taskData = {
     examples: [
       {
         title: "Semantic segmentation · Cityscapes",
-        caption: "OVB 9B · one prompted legend; single-pass decoded mask.",
         prompt: "Paint the requested Cityscapes classes with their assigned colors.",
         outputLabel: "Decoded semantic mask",
         input: "static/images/paper/city-input.webp",
@@ -14,7 +13,6 @@ const taskData = {
       },
       {
         title: "Semantic segmentation · COCO-Object",
-        caption: "OVB 9B · one grouped prediction; 80 classes are prompted in four groups.",
         prompt: "Paint the requested object classes with their assigned colors.",
         outputLabel: "Decoded semantic mask",
         input: "static/images/paper/coco-input.jpg",
@@ -24,7 +22,6 @@ const taskData = {
       },
       {
         title: "Semantic segmentation · Cityscapes",
-        caption: "OVB 9B · another single-pass decoded mask from the main paper.",
         prompt: "Paint the requested Cityscapes classes with their assigned colors.",
         outputLabel: "Decoded semantic mask",
         input: "static/images/paper/city-2-input.webp",
@@ -38,7 +35,6 @@ const taskData = {
     readout: "distinct color regions → instance masks",
     examples: [{
       title: "Instance segmentation · SA-Co/Gold",
-      caption: "OVB 9B · each dried apricot receives its own color.",
       prompt: "Segment every dried apricot using a different listed color for each instance.",
       outputLabel: "Generated instance colors",
       input: "static/images/paper/instance-input.jpg",
@@ -47,7 +43,6 @@ const taskData = {
       outputAlt: "Individual dried apricots painted in distinct colors on black"
     }, {
       title: "Instance segmentation · SA-Co/Gold",
-      caption: "OVB 9B · each person receives a distinct color.",
       prompt: "Segment each person with a different color; leave the background black.",
       outputLabel: "Generated instance colors",
       input: "static/images/paper/instance-person-input.webp",
@@ -56,20 +51,18 @@ const taskData = {
       outputAlt: "People segmented with separate colors on black"
     }, {
       title: "Instance segmentation · SA-Co/Gold",
-      caption: "OVB 9B · individual gummy candies are color-coded.",
-      prompt: "Segment each gummy candy with a different color; leave the background black.",
+      prompt: "Segment each football helmet with a different color; leave the background black.",
       outputLabel: "Generated instance colors",
-      input: "static/images/paper/instance-candy-input.webp",
-      inputAlt: "Gummy candies in an SA-Co/Gold example",
-      output: "static/images/paper/instance-candy-prediction.webp",
-      outputAlt: "Individual gummy candies painted in separate colors on black"
+      input: "static/images/paper/07_football_helmet.jpg",
+      inputAlt: "Football players holding helmets in an SA-Co/Gold example",
+      output: "static/images/paper/07_football_helmet.png",
+      outputAlt: "Individual football helmets painted in separate colors on black"
     }]
   },
   referring: {
     readout: "prompted foreground color → binary mask",
     examples: [{
       title: "Referring segmentation · RefCOCOg",
-      caption: "OVB 9B · original referring expression.",
       prompt: 'Segment “Woman in dark blue jacket with red and black scarf.”',
       outputLabel: "Generated referring mask",
       input: "static/images/paper/referring-input.webp",
@@ -78,7 +71,6 @@ const taskData = {
       outputAlt: "The referred person painted in color on black"
     }, {
       title: "Referring segmentation · RefCOCOg",
-      caption: "OVB 9B · original referring expression.",
       prompt: 'Segment “A boy in a blue shirt about to blow out his candles.”',
       outputLabel: "Generated referring mask",
       input: "static/images/paper/referring-boy-input.webp",
@@ -87,7 +79,6 @@ const taskData = {
       outputAlt: "The boy in the blue shirt selected by the referring mask"
     }, {
       title: "Referring segmentation · RefCOCOg",
-      caption: "OVB 9B · fine-grained object boundary example.",
       prompt: 'Segment “A black ancient Greek vase with figures.”',
       outputLabel: "Generated referring mask",
       input: "static/images/paper/referring-vase-input.webp",
@@ -100,7 +91,6 @@ const taskData = {
     readout: "prompted foreground color → binary mask",
     examples: [{
       title: "Reasoning segmentation · ReasonSeg",
-      caption: "OVB 9B · raw query, without the rewrite used for the benchmark score below.",
       prompt: 'Segment “the place where piano players should sit.”',
       outputLabel: "Generated reasoning mask",
       input: "static/images/paper/reasoning-input.webp",
@@ -109,7 +99,6 @@ const taskData = {
       outputAlt: "Piano bench painted in color on black"
     }, {
       title: "Reasoning segmentation · ReasonSeg",
-      caption: "OVB 9B · raw reasoning query, without rewriting.",
       prompt: 'Segment “After cooking, consuming food, and preparing for food, where can we throw away the rest of the food and scraps?”',
       outputLabel: "Generated reasoning mask",
       input: "static/images/paper/reasoning-bin-input.webp",
@@ -118,7 +107,6 @@ const taskData = {
       outputAlt: "Predicted region for disposing of food scraps"
     }, {
       title: "Reasoning segmentation · ReasonSeg",
-      caption: "OVB 9B · raw reasoning query, without rewriting.",
       prompt: 'Segment “If you want to play table tennis indoors, what furniture in the picture should be used as the playing surface?”',
       outputLabel: "Generated reasoning mask",
       input: "static/images/paper/reasoning-table-input.webp",
@@ -131,7 +119,6 @@ const taskData = {
     readout: "grayscale → relative depth; align for evaluation",
     examples: [{
       title: "Relative depth · NYUv2",
-      caption: "OVB 9B · aligned depth visualization from the main-paper comparison; color shows relative distance.",
       prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
       outputLabel: "Aligned depth visualization",
       input: "static/images/paper/depth-input.webp",
@@ -140,7 +127,6 @@ const taskData = {
       outputAlt: "Colorized relative depth prediction for the bedroom"
     }, {
       title: "Relative depth · ETH3D",
-      caption: "OVB Klein 9B (50K) · neutral inverse depth; near points are bright.",
       prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
       outputLabel: "Inverse depth prediction",
       input: "static/images/paper/depth-eth3d-input.webp",
@@ -149,7 +135,6 @@ const taskData = {
       outputAlt: "Grayscale inverse depth prediction for the ETH3D scene"
     }, {
       title: "Relative depth · iBims-1",
-      caption: "OVB Klein 9B (50K) · neutral inverse depth; near points are bright.",
       prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
       outputLabel: "Inverse depth prediction",
       input: "static/images/paper/depth-ibims-input.webp",
@@ -162,7 +147,6 @@ const taskData = {
     readout: "RGB channels → camera-space normal vectors",
     examples: [{
       title: "Surface normals · iBims-1",
-      caption: "OVB Klein 9B (50K ablation) · RGB encodes camera-space orientation.",
       prompt: "Encode camera-space surface normals in the RGB channels.",
       outputLabel: "Generated normal map",
       input: "static/images/paper/normals-ibims-input.webp",
@@ -171,7 +155,6 @@ const taskData = {
       outputAlt: "RGB surface-normal prediction for the iBims-1 scene"
     }, {
       title: "Surface normals · ScanNet",
-      caption: "OVB 9B · zero-shot ScanNet prediction; RGB encodes camera-space orientation.",
       prompt: "Encode camera-space surface normals in the RGB channels.",
       outputLabel: "Generated normal map",
       input: "static/images/paper/normals-input.webp",
@@ -180,7 +163,6 @@ const taskData = {
       outputAlt: "Zero-shot OVB 9B surface-normal map of the bin and surrounding surfaces"
     }, {
       title: "Surface normals · NYUv2",
-      caption: "OVB Klein 9B (50K ablation) · RGB encodes camera-space orientation.",
       prompt: "Encode camera-space surface normals in the RGB channels.",
       outputLabel: "Generated normal map",
       input: "static/images/paper/normals-nyu-input.webp",
@@ -193,7 +175,6 @@ const taskData = {
     readout: null,
     examples: [{
       title: "Image editing · ImgEdit-Bench",
-      caption: "OVB 9B · retained editing ability after perception training.",
       prompt: "Remove the green armchair.",
       outputLabel: "OVB image edit",
       input: "static/images/paper/editing-input.webp",
@@ -202,7 +183,6 @@ const taskData = {
       outputAlt: "Same room after the green armchair is removed"
     }, {
       title: "Image editing · ImgEdit-Bench",
-      caption: "OVB 9B · add an object to the scene.",
       prompt: "Add a group of deer grazing in the middle-right of the snow-covered field.",
       outputLabel: "OVB image edit",
       input: "static/images/paper/editing-deer-input.webp",
@@ -211,7 +191,6 @@ const taskData = {
       outputAlt: "Snow-covered field with deer added"
     }, {
       title: "Image editing · ImgEdit-Bench",
-      caption: "OVB 9B · replace an object in the scene.",
       prompt: "Replace the brown suitcase with a large potted plant.",
       outputLabel: "OVB image edit",
       input: "static/images/paper/editing-plant-input.webp",
@@ -235,7 +214,6 @@ if (demo) {
   const readout = demo.querySelector(".decode-step");
   const decoder = demo.querySelector("[data-decoder]");
   const title = demo.querySelector("[data-example-title]");
-  const caption = demo.querySelector("[data-example-caption]");
   const controls = demo.querySelector("[data-example-nav]");
   const count = demo.querySelector("[data-example-count]");
   let currentTask = "semantic";
@@ -254,13 +232,13 @@ if (demo) {
     decoder.textContent = task.readout ?? "";
     readout.hidden = task.readout === null;
     title.textContent = example.title;
-    caption.textContent = example.caption;
     controls.hidden = task.examples.length < 2;
-    count.textContent = `${currentExample + 1} / ${task.examples.length}`;
+    count.textContent = `Example ${currentExample + 1} of ${task.examples.length}`;
   };
 
   const selectTask = (tab, focus = false) => {
     currentTask = tab.dataset.task;
+    demo.dataset.activeTask = currentTask;
     currentExample = 0;
     tabs.forEach((item) => {
       const selected = item === tab;

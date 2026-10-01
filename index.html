@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/styles.css?v=20261001-8">
+  <link rel="stylesheet" href="static/styles.css?v=20261001-12">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -123,10 +123,10 @@
         <div class="section-heading">
           <p class="section-kicker">The unified interface</p>
           <h2>Perception, expressed as image generation.</h2>
-          <p>Every OVB checkpoint serves multiple tasks through the same image-generation interface. Choose a task to explore real inputs and predictions from the paper. Instructions are summarized; mask colors encode labels. The editing tab shows a capability retained after perception training.</p>
+          <p>One model, multiple tasks. Explore inputs and predictions from the paper, including image editing retained after perception training.</p>
         </div>
 
-        <div class="task-demo" data-task-demo>
+        <div class="task-demo" data-task-demo data-active-task="semantic">
           <div class="task-tabs" role="tablist" aria-label="Example task">
             <button class="task-tab is-active" type="button" role="tab" id="task-tab-semantic" aria-controls="task-panel" aria-selected="true" tabindex="0" data-task="semantic">Semantic</button>
             <button class="task-tab" type="button" role="tab" id="task-tab-instance" aria-controls="task-panel" aria-selected="false" tabindex="-1" data-task="instance">Instance</button>
@@ -168,10 +168,10 @@
               </article>
             </div>
             <div class="task-example-footer">
-              <div aria-live="polite"><strong data-example-title>Semantic segmentation · Cityscapes</strong><span data-example-caption>OVB 9B · one prompted legend; single-pass decoded mask.</span></div>
+              <div aria-live="polite"><strong data-example-title>Semantic segmentation · Cityscapes</strong></div>
               <div class="task-example-nav" data-example-nav aria-label="Select example">
                 <button type="button" data-previous-example aria-label="Previous example">←</button>
-                <span data-example-count>1 / 3</span>
+                <span data-example-count>Example 1 of 3</span>
                 <button type="button" data-next-example aria-label="Next example">→</button>
               </div>
             </div>
@@ -185,29 +185,28 @@
         <div class="section-heading">
           <p class="section-kicker">Measured performance</p>
           <h2>A shared model for six perception tasks.</h2>
-          <p>Selected main-paper results compare OVB with Vision Banana and specialist models across segmentation, relative depth, and surface normals. Scores include model sizes and inference details; each OVB checkpoint serves multiple tasks.</p>
+          <p>OVB takes on segmentation, relative depth, and surface normals with a shared model.</p>
         </div>
 
         <div class="benchmark-comparison" aria-labelledby="comparison-heading">
           <div class="comparison-heading">
             <h3 id="comparison-heading">How does OVB compare?</h3>
-            <p>Selected main-paper scores include the model size and inference setup. OVB's 20-pass Cityscapes score exceeds the reported Vision Banana and SAM 3 scores. Across the other segmentation tasks, it exceeds some specialist baselines while trailing Vision Banana.</p>
+            <p>OVB's 20-pass Cityscapes score exceeds Vision Banana and SAM 3. On the other segmentation tasks, it outperforms some specialists while trailing Vision Banana.</p>
           </div>
           <div class="result-table-wrap" role="region" aria-label="Segmentation, depth, and surface-normal benchmark comparisons" tabindex="0">
             <table class="result-table comparison-table">
               <caption>Selected comparisons across six perception tasks from the main paper; inference setups differ</caption>
               <thead><tr><th scope="col">Task &amp; benchmark</th><th scope="col" class="ovb-column">Open Vision Banana</th><th scope="col">Vision Banana</th><th scope="col">Selected specialists</th></tr></thead>
               <tbody>
-                <tr><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong>74.9</strong><small>9B · 20-pass vote<br>69.2 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span><span>X-Decoder <b>52.0</b></span></td></tr>
-                <tr><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>68.5</strong><small>9B<br>Original expressions</small></td><td><strong>73.8</strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
-                <tr><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>73.6</strong><small>4B<br>+ Qwen3-VL-32B-Thinking</small></td><td><strong>79.3</strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
-                <tr><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>38.9</strong><small>9B · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong>47.5</strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
-                <tr><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong>96.7</strong><small>9B<br>Per-image log-depth alignment</small></td><td>—</td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
-                <tr><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong>13.34</strong><small>9B<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
+                <tr data-task-color="semantic"><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong>74.9</strong><small>9B · 20-pass vote<br>69.2 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span><span>X-Decoder <b>52.0</b></span></td></tr>
+                <tr data-task-color="referring"><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>68.5</strong><small>9B<br>Original expressions</small></td><td><strong>73.8</strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
+                <tr data-task-color="reasoning"><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>73.6</strong><small>4B<br>+ Qwen3-VL-32B-Thinking</small></td><td><strong>79.3</strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
+                <tr data-task-color="instance"><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>38.9</strong><small>9B · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong>47.5</strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
+                <tr data-task-color="depth"><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong>96.7</strong><small>9B<br>Per-image log-depth alignment</small></td><td>—</td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
+                <tr data-task-color="normals"><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong>13.34</strong><small>9B<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
               </tbody>
             </table>
           </div>
-          <p class="result-note">Higher scores are better, except for surface-normal mean error, where lower is better. Segmentation baselines and Vision Banana's rounded normal error come from the <a href="https://arxiv.org/html/2604.20329" target="_blank" rel="noopener noreferrer">Vision Banana report, Tables 2–5 and 7</a>; specialist geometry scores come from the <a href="https://arxiv.org/html/2609.08084" target="_blank" rel="noopener noreferrer">Marigold V2 report, Tables 1 and 9</a>. Models differ in training data, readout, inference budget, and language-model dependencies; multi-pass results use additional inference. Geometry evaluation protocols may differ. Dashes indicate omitted scores. Full evaluation details will accompany the updated manuscript.</p>
         </div>
 
       </div>
@@ -218,7 +217,7 @@
         <div class="section-heading">
           <p class="section-kicker">A central finding</p>
           <h2>Test-Time Scaling for Vision Models</h2>
-          <p>The model often finds the right regions but assigns the wrong prompted colors. OVB repeats the same image with fresh class-to-color legends, decodes each output into common class IDs, then takes a pixel-wise majority vote. These extra inference passes improve segmentation accuracy, with no additional training.</p>
+          <p>The model often finds the right regions but assigns the wrong colors. Repeating predictions with different color legends and voting on the decoded labels improves accuracy without additional training.</p>
         </div>
         <ol class="scaling-flow" aria-label="Test-time scaling procedure">
           <li>
@@ -252,7 +251,7 @@
         </div>
         <div class="scaling-explain">
           <figure><img src="static/images/paper/cityscapes-scaling.webp" alt="Cityscapes mIoU climbs as predictions from more color legends are combined, while individual pass scores stay approximately flat" loading="lazy"><figcaption>Cityscapes repeat sweep</figcaption></figure>
-          <div><h3>The gain comes from correcting color binding.</h3><p>On Cityscapes, the 9B model's single-pass score is 65.6 mIoU, yet an oracle that relabels its predicted regions reaches 85.9. Voting raises measured accuracy while the oracle region score barely changes. On COCO-Object, wrong-class foreground pixels fall from 19.0% to 10.3% over 90 passes.</p></div>
+          <div><h3>The gain comes from correcting color binding.</h3><p>Voting improves label accuracy while region quality stays nearly unchanged. On COCO-Object, wrong-class foreground pixels fall from 19.0% to 10.3% over 90 passes.</p></div>
         </div>
       </div>
     </section>
@@ -262,19 +261,19 @@
         <div class="section-heading">
           <p class="section-kicker">WHAT MAKES THE RECIPE WORK</p>
           <h2>Designing Generative Perception Models</h2>
-          <p>The paper varies target encoding, prompts, training data, and model adaptation under controlled settings. Three takeaways matter most for applying this approach.</p>
+          <p>Three takeaways from studying target encoding, training data, and model adaptation.</p>
         </div>
         <div class="finding-grid">
-          <article class="finding-card"><span class="finding-index">01</span><div class="finding-copy"><span class="finding-factor">RGB interface</span><h3>How labels map to colors matters.</h3><p>A model trained with one fixed Cityscapes legend scores 54.3 mIoU under that legend, but only 7.1 when the colors change at inference. Randomized assignments teach it to follow the prompt; a well-separated 64-color palette provides the best overall trade-off in the palette study.</p></div></article>
-          <article class="finding-card"><span class="finding-index">02</span><div class="finding-copy"><span class="finding-factor">Multi-task recipe</span><h3>Balance performance across tasks.</h3><p>Prompt and target encoding choices, data composition, replay, and training duration affect depth, normals, segmentation, and retained generative abilities differently. More data or longer training is not uniformly better, and gains on one metric can come at the expense of another. The final recipe is a multi-task compromise, selected across tasks rather than on a single benchmark.</p></div></article>
-          <article class="finding-card"><span class="finding-index">03</span><div class="finding-copy"><span class="finding-factor">Model adaptation</span><h3>Adapt more of the backbone.</h3><p>Tuning only the last few transformer blocks performs poorly; strong perception requires adapting a substantial fraction of the backbone. Performance improves markedly as more of the transformer is adapted, though depth, normals, and segmentation favor slightly different adaptation scopes.</p></div></article>
+          <article class="finding-card"><span class="finding-index">01</span><div class="finding-copy"><span class="finding-factor">RGB interface</span><h3>How labels map to colors matters.</h3><p>Training with a fixed color legend yields 54.3 mIoU on Cityscapes, but only 7.1 when the colors change. Randomized assignments teach the model to follow the prompt.</p></div></article>
+          <article class="finding-card"><span class="finding-index">02</span><div class="finding-copy"><span class="finding-factor">Multi-task recipe</span><h3>Balance performance across tasks.</h3><p>More data or longer training can help one task while hurting another. The final recipe balances segmentation, geometry, and retained generative abilities.</p></div></article>
+          <article class="finding-card"><span class="finding-index">03</span><div class="finding-copy"><span class="finding-factor">Model adaptation</span><h3>Adapt more of the backbone.</h3><p>Tuning only the last few transformer blocks performs poorly. Strong perception requires adapting a substantial fraction of the backbone.</p></div></article>
         </div>
         <details class="research-disclosure recipe-disclosure">
           <summary><span class="disclosure-label">Explore the complete recipe and architecture</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
           <div class="disclosure-content">
             <figure class="paper-figure">
               <img src="static/images/ovb-overview.webp" alt="Overview of the Open Vision Banana research questions, data, generator, RGB output and decoder" width="6256" height="2195" loading="lazy">
-              <figcaption><strong>The complete recipe.</strong> Public training data, target encoding, prompts, model adaptation, and inference-time readout are evaluated as a coupled system. Figure from the current main-paper draft.</figcaption>
+              <figcaption><strong>The complete recipe.</strong> Public data, target encoding, prompts, model adaptation, and prediction readout.</figcaption>
             </figure>
           </div>
         </details>
@@ -286,11 +285,11 @@
         <div class="section-heading">
           <p class="section-kicker">Where the limits show</p>
           <h2>Geometry is useful, but domain-dependent.</h2>
-          <p>OVB predicts relative inverse depth and camera-space surface normals through RGB images. Per-image depth alignment enables evaluation of relative scene structure, while performance on both tasks varies with the domain and training data.</p>
+          <p>OVB predicts depth and surface orientation through RGB images. Performance varies with the domain and training data.</p>
         </div>
         <div class="geometry-summary">
-          <article><h3>Relative depth</h3><p>OVB recovers scene structure on NYUv2 and DIODE. Evaluation uses per-image alignment; aligned scores do not imply absolute distances in meters.</p></article>
-          <article><h3>Surface normals</h3><p>OVB predicts camera-space surface orientation, with competitive selected results on NYUv2 and Sintel. Predictions can still contain artifacts.</p></article>
+          <article><h3>Relative depth</h3><p>Recovers relative scene structure on NYUv2 and DIODE, rather than absolute distances in meters.</p></article>
+          <article><h3>Surface normals</h3><p>Competitive results on NYUv2 and Sintel, though predictions can still contain artifacts.</p></article>
         </div>
         <figure class="geometry-examples">
           <div class="geometry-example-row" style="--crop-y: 43; --crop-height: 330">
@@ -309,12 +308,12 @@
               <div><span>OVB 9B · zero-shot</span><div class="geometry-crop" style="--crop-x: 946"><img src="static/images/paper/geometry-comparison.webp" alt="Zero-shot OVB 9B surface-normal prediction for the bin and surrounding surfaces" width="2736" height="831" loading="lazy"></div></div>
             </div>
           </div>
-          <figcaption>Representative main-paper examples. Colors show relative depth or surface orientation. The ScanNet prediction uses the zero-shot OVB 9B model.</figcaption>
+          <figcaption>Colors show relative depth or surface orientation.</figcaption>
         </figure>
         <div class="geometry-comparisons">
           <div class="comparison-heading">
             <h3>Selected geometry results</h3>
-            <p>Higher δ₁ is better for relative depth; lower mean angular error is better for surface normals. OVB's depth scores use per-image log-depth alignment.</p>
+            <p>OVB's relative-depth scores use per-image alignment.</p>
           </div>
           <div class="result-table-wrap" role="region" aria-label="Depth and surface-normal benchmark comparisons" tabindex="0">
             <table class="result-table geometry-table">
@@ -332,7 +331,6 @@
               </tbody>
             </table>
           </div>
-          <p class="result-note">Published specialist values come from the <a href="https://arxiv.org/html/2609.08084" target="_blank" rel="noopener noreferrer">Marigold V2 report, Tables 1 and 9</a>; Vision Banana's normal error is rounded from <a href="https://arxiv.org/html/2604.20329" target="_blank" rel="noopener noreferrer">its report, Table 7</a>. Evaluation protocols may differ. Dashes indicate scores omitted from this comparison; full results are in the paper.</p>
         </div>
       </div>
     </section>
@@ -342,7 +340,7 @@
         <div>
           <p class="section-kicker">Open by construction</p>
           <h2>A recipe others can inspect, reproduce, and extend.</h2>
-          <p class="lead-small">OVB uses public base models and datasets. All important resources are linked here.</p>
+          <p class="lead-small">Built with public base models and datasets.</p>
         </div>
         <div class="release-list">
           <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Model weights</strong><small>Hugging Face model repository</small></p><a href="https://huggingface.co/FunAILab/Open-Vision-Banana" target="_blank" rel="noopener noreferrer">View models ↗</a></div>
@@ -359,7 +357,7 @@
         <div class="section-heading centered">
           <p class="section-kicker">Citation</p>
           <h2>Using Open Vision Banana?</h2>
-          <p>If you use OVB in your work, please cite the project. This provisional citation will be updated when the manuscript is released.</p>
+          <p>Please cite OVB if you use it in your work.</p>
         </div>
         <div class="bibtex-shell">
           <button class="copy-button" type="button" data-copy-bib aria-label="Copy BibTeX">Copy</button>
@@ -385,6 +383,6 @@
     </div>
   </footer>
 
-  <script src="static/script.js?v=20261001-7"></script>
+  <script src="static/script.js?v=20261001-9"></script>
 </body>
 </html>
