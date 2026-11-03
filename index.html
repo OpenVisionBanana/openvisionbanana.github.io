@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/styles.css?v=20261001-12">
+  <link rel="stylesheet" href="static/styles.css?v=20261103-2">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -191,19 +191,19 @@
         <div class="benchmark-comparison" aria-labelledby="comparison-heading">
           <div class="comparison-heading">
             <h3 id="comparison-heading">How does OVB compare?</h3>
-            <p>OVB's 20-pass Cityscapes score exceeds Vision Banana and SAM 3. On the other segmentation tasks, it outperforms some specialists while trailing Vision Banana.</p>
+            <p>OVB's non-zero-shot Cityscapes score exceeds the reported zero-shot scores of Vision Banana and SAM 3. Training and inference setups differ across methods.</p>
           </div>
           <div class="result-table-wrap" role="region" aria-label="Segmentation, depth, and surface-normal benchmark comparisons" tabindex="0">
             <table class="result-table comparison-table">
-              <caption>Selected comparisons across six perception tasks from the main paper; inference setups differ</caption>
+              <caption>Selected comparisons across six perception tasks from the main paper; OVB results are non-zero-shot and comparison setups differ</caption>
               <thead><tr><th scope="col">Task &amp; benchmark</th><th scope="col" class="ovb-column">Open Vision Banana</th><th scope="col">Vision Banana</th><th scope="col">Selected specialists</th></tr></thead>
               <tbody>
-                <tr data-task-color="semantic"><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong>74.9</strong><small>9B · 20-pass vote<br>69.2 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span><span>X-Decoder <b>52.0</b></span></td></tr>
-                <tr data-task-color="referring"><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>68.5</strong><small>9B<br>Original expressions</small></td><td><strong>73.8</strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
-                <tr data-task-color="reasoning"><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>73.6</strong><small>4B<br>+ Qwen3-VL-32B-Thinking</small></td><td><strong>79.3</strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
-                <tr data-task-color="instance"><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>38.9</strong><small>9B · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong>47.5</strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
-                <tr data-task-color="depth"><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong>96.7</strong><small>9B<br>Per-image log-depth alignment</small></td><td>—</td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
-                <tr data-task-color="normals"><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong>13.34</strong><small>9B<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
+                <tr data-task-color="semantic"><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong><u>75.7</u></strong><small>9B · non-zero-shot · 20-pass vote<br>69.7 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span></td></tr>
+                <tr data-task-color="referring"><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>69.2</strong><small>9B · non-zero-shot<br>Original expressions</small></td><td><strong><u>73.8</u></strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
+                <tr data-task-color="reasoning"><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>74.6</strong><small>4B · non-zero-shot<br>+ Gemma4 31B</small></td><td><strong><u>79.3</u></strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
+                <tr data-task-color="instance"><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>39.6</strong><small>9B · non-zero-shot · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong><u>47.5</u></strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
+                <tr data-task-color="depth"><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong><u>99.0</u></strong><small>9B · non-zero-shot<br>Per-image disparity-affine alignment</small></td><td><strong>94.8</strong><small>Metric depth</small></td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
+                <tr data-task-color="normals"><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong><u>13.51</u></strong><small>9B · non-zero-shot<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
               </tbody>
             </table>
           </div>
@@ -246,11 +246,11 @@
           </li>
         </ol>
         <div class="scaling-grid">
-          <div class="scaling-stat"><span>Cityscapes · 9B</span><strong>65.6 <b>→</b> 73.9</strong><small>mIoU, mean single pass → 20-pass vote</small></div>
-          <div class="scaling-stat"><span>COCO-Object · 9B</span><strong>37.5 <b>→</b> 51.6</strong><small>mIoU, mean single pass → 90-pass vote</small></div>
+          <div class="scaling-stat"><span>Cityscapes · 9B · zero-shot</span><strong>65.4 <b>→</b> 74.06</strong><small>mIoU, first pass → peak vote (27, 28, or 30 passes)</small></div>
+          <div class="scaling-stat"><span>COCO-Object · 9B · non-zero-shot</span><strong>45.0 <b>→</b> 59.3</strong><small>mIoU, mean single pass → 90-pass vote</small></div>
         </div>
         <div class="scaling-explain">
-          <figure><img src="static/images/paper/cityscapes-scaling.webp" alt="Cityscapes mIoU climbs as predictions from more color legends are combined, while individual pass scores stay approximately flat" loading="lazy"><figcaption>Cityscapes repeat sweep</figcaption></figure>
+          <figure><img src="static/images/paper/cityscapes-scaling.webp" alt="Cityscapes mIoU climbs as predictions from more color legends are combined, while individual pass scores stay approximately flat" loading="lazy"><figcaption>Cityscapes repeat sweep · zero-shot models</figcaption></figure>
           <div><h3>The gain comes from correcting color binding.</h3><p>Voting improves label accuracy while region quality stays nearly unchanged. On COCO-Object, wrong-class foreground pixels fall from 19.0% to 10.3% over 90 passes.</p></div>
         </div>
       </div>
@@ -292,20 +292,20 @@
           <article><h3>Surface normals</h3><p>Competitive results on NYUv2 and Sintel, though predictions can still contain artifacts.</p></article>
         </div>
         <figure class="geometry-examples">
-          <div class="geometry-example-row" style="--crop-y: 43; --crop-height: 330">
+          <div class="geometry-example-row">
             <h3>Relative depth · NYUv2</h3>
             <div class="geometry-example-grid">
-              <div><span>Input</span><div class="geometry-crop" style="--crop-x: 46"><img src="static/images/paper/geometry-comparison.webp" alt="NYUv2 bedroom with a bed in the foreground" width="2736" height="831" loading="lazy"></div></div>
-              <div><span>Ground truth</span><div class="geometry-crop" style="--crop-x: 496"><img src="static/images/paper/geometry-comparison.webp" alt="Reference relative depth for the bedroom" width="2736" height="831" loading="lazy"></div></div>
-              <div><span>OVB 9B</span><div class="geometry-crop" style="--crop-x: 1396"><img src="static/images/paper/geometry-comparison.webp" alt="OVB 9B relative-depth prediction for the bedroom" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>Input</span><img src="static/images/paper/geometry/depth/input/depth_nyu_01.png" alt="NYUv2 kitchen sink and cabinets" width="560" height="426" loading="lazy"></div>
+              <div><span>Ground truth</span><img src="static/images/paper/geometry/depth/target/depth_nyu_01.png" alt="Colorized reference depth for the kitchen" width="560" height="426" loading="lazy"></div>
+              <div><span>OVB 9B</span><img src="static/images/paper/geometry/depth/ovb_klein_9b/depth_nyu_01.png" alt="Colorized OVB 9B relative-depth prediction for the kitchen" width="560" height="426" loading="lazy"></div>
             </div>
           </div>
-          <div class="geometry-example-row" style="--crop-y: 500; --crop-height: 326">
+          <div class="geometry-example-row">
             <h3>Surface normals · ScanNet</h3>
             <div class="geometry-example-grid">
-              <div><span>Input</span><div class="geometry-crop" style="--crop-x: 46"><img src="static/images/paper/geometry-comparison.webp" alt="ScanNet scene with a cylindrical bin beside cabinetry" width="2736" height="831" loading="lazy"></div></div>
-              <div><span>Ground truth</span><div class="geometry-crop" style="--crop-x: 496"><img src="static/images/paper/geometry-comparison.webp" alt="Reference surface normals for the bin and surrounding surfaces" width="2736" height="831" loading="lazy"></div></div>
-              <div><span>OVB 9B · zero-shot</span><div class="geometry-crop" style="--crop-x: 946"><img src="static/images/paper/geometry-comparison.webp" alt="Zero-shot OVB 9B surface-normal prediction for the bin and surrounding surfaces" width="2736" height="831" loading="lazy"></div></div>
+              <div><span>Input</span><img src="static/images/paper/geometry/surface_normals/input/normals_scannet_05.png" alt="ScanNet scene with upholstered furniture" width="640" height="480" loading="lazy"></div>
+              <div><span>Ground truth</span><img src="static/images/paper/geometry/surface_normals/target/normals_scannet_05.png" alt="Reference surface normals for the furniture and surrounding floor" width="640" height="480" loading="lazy"></div>
+              <div><span>OVB 9B</span><img src="static/images/paper/geometry/surface_normals/ovb_klein_9b/normals_scannet_05.png" alt="OVB 9B surface-normal prediction for the furniture and surrounding floor" width="640" height="480" loading="lazy"></div>
             </div>
           </div>
           <figcaption>Colors show relative depth or surface orientation.</figcaption>
@@ -313,7 +313,7 @@
         <div class="geometry-comparisons">
           <div class="comparison-heading">
             <h3>Selected geometry results</h3>
-            <p>OVB's relative-depth scores use per-image alignment.</p>
+            <p>OVB uses per-image disparity-affine alignment for depth. Published specialist scores use different protocols and training data.</p>
           </div>
           <div class="result-table-wrap" role="region" aria-label="Depth and surface-normal benchmark comparisons" tabindex="0">
             <table class="result-table geometry-table">
@@ -327,7 +327,7 @@
                 <tr><th scope="row">Lotus-2 </th><td>97.6</td><td>95.5</td><td>16.9</td><td>30.3</td></tr>
                 <tr><th scope="row">DSINE </th><td>—</td><td>—</td><td>16.4</td><td>34.9</td></tr>
                 <tr><th scope="row">Vision Banana </th><td>—</td><td>—</td><td>17.8</td><td>—</td></tr>
-                <tr class="ovb-row"><th scope="row">Open Vision Banana 9B</th><td class="selected-score"><strong>96.7</strong></td><td class="selected-score"><strong>92.1</strong></td><td class="selected-score"><strong>13.34</strong></td><td class="selected-score"><strong>28.14</strong></td></tr>
+                <tr class="ovb-row"><th scope="row">Open Vision Banana 9B · non-zero-shot</th><td class="selected-score"><strong>99.0</strong></td><td class="selected-score"><strong>94.1</strong></td><td class="selected-score"><strong>13.51</strong></td><td class="selected-score"><strong>28.63</strong></td></tr>
               </tbody>
             </table>
           </div>
@@ -383,6 +383,6 @@
     </div>
   </footer>
 
-  <script src="static/script.js?v=20261001-9"></script>
+  <script src="static/script.js?v=20261103-5"></script>
 </body>
 </html>

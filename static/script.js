@@ -117,59 +117,35 @@ const taskData = {
   },
   depth: {
     readout: "grayscale → relative depth; align for evaluation",
-    examples: [{
-      title: "Relative depth · NYUv2",
+    examples: [
+      ["NYUv2", "depth_nyu_01", "a kitchen sink and cabinets"],
+      ["NYUv2", "depth_nyu_02", "a kitchen with a refrigerator and ovens"],
+      ["DIODE", "depth_diode_06", "a brick building entrance"]
+    ].map(([dataset, file, scene]) => ({
+      title: `Relative depth · ${dataset}`,
       prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
-      outputLabel: "Aligned depth visualization",
-      input: "static/images/paper/depth-input.webp",
-      inputAlt: "NYUv2 bedroom with a bed in the foreground",
-      output: "static/images/paper/depth-prediction.webp",
-      outputAlt: "Colorized relative depth prediction for the bedroom"
-    }, {
-      title: "Relative depth · ETH3D",
-      prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
-      outputLabel: "Inverse depth prediction",
-      input: "static/images/paper/depth-eth3d-input.webp",
-      inputAlt: "ETH3D scene used in the paper's depth comparison",
-      output: "static/images/paper/depth-eth3d-prediction.webp",
-      outputAlt: "Grayscale inverse depth prediction for the ETH3D scene"
-    }, {
-      title: "Relative depth · iBims-1",
-      prompt: "Generate relative inverse depth: near points bright, far points dark, matching input pixels.",
-      outputLabel: "Inverse depth prediction",
-      input: "static/images/paper/depth-ibims-input.webp",
-      inputAlt: "iBims-1 indoor scene used in the paper's depth comparison",
-      output: "static/images/paper/depth-ibims-prediction.webp",
-      outputAlt: "Grayscale inverse depth prediction for the iBims-1 scene"
-    }]
+      outputLabel: "Colorized depth prediction",
+      input: `static/images/paper/geometry/depth/input/${file}.png`,
+      inputAlt: `${dataset} scene showing ${scene}`,
+      output: `static/images/paper/geometry/depth/ovb_klein_9b/${file}.png`,
+      outputAlt: `Colorized relative-depth prediction for ${scene}`
+    }))
   },
   normals: {
     readout: "RGB channels → camera-space normal vectors",
-    examples: [{
-      title: "Surface normals · iBims-1",
+    examples: [
+      ["iBims-1", "normals_ibims1_00", "a green-walled room with a table"],
+      ["NYUv2", "normals_nyu_01", "a bathroom sink"],
+      ["ScanNet", "normals_scannet_05", "upholstered furniture"]
+    ].map(([dataset, file, scene]) => ({
+      title: `Surface normals · ${dataset}`,
       prompt: "Encode camera-space surface normals in the RGB channels.",
       outputLabel: "Generated normal map",
-      input: "static/images/paper/normals-ibims-input.webp",
-      inputAlt: "iBims-1 indoor scene used in the paper's surface-normal comparison",
-      output: "static/images/paper/normals-ibims-prediction.webp",
-      outputAlt: "RGB surface-normal prediction for the iBims-1 scene"
-    }, {
-      title: "Surface normals · ScanNet",
-      prompt: "Encode camera-space surface normals in the RGB channels.",
-      outputLabel: "Generated normal map",
-      input: "static/images/paper/normals-input.webp",
-      inputAlt: "ScanNet scene with a cylindrical bin beside cabinetry",
-      output: "static/images/paper/normals-prediction.webp",
-      outputAlt: "Zero-shot OVB 9B surface-normal map of the bin and surrounding surfaces"
-    }, {
-      title: "Surface normals · NYUv2",
-      prompt: "Encode camera-space surface normals in the RGB channels.",
-      outputLabel: "Generated normal map",
-      input: "static/images/paper/normals-nyu-input.webp",
-      inputAlt: "NYUv2 indoor scene used in the paper's surface-normal comparison",
-      output: "static/images/paper/normals-nyu-prediction.webp",
-      outputAlt: "RGB surface-normal prediction for the NYUv2 scene"
-    }]
+      input: `static/images/paper/geometry/surface_normals/input/${file}.png`,
+      inputAlt: `${dataset} scene showing ${scene}`,
+      output: `static/images/paper/geometry/surface_normals/ovb_klein_9b/${file}.png`,
+      outputAlt: `Surface-normal prediction for ${scene}`
+    }))
   },
   editing: {
     readout: null,

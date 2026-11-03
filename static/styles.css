@@ -405,7 +405,7 @@ html { scroll-padding-top: 86px; }
 .geometry-example-grid { display: grid; gap: 14px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .geometry-example-grid > div { min-width: 0; }
 .geometry-example-grid > div > span { color: var(--muted); display: block; font-size: .72rem; margin-bottom: 7px; text-align: center; }
-/* Show the original figure's input, ground truth, and selected 9B columns. */
+.geometry-example-grid img { border-radius: 8px; display: block; height: auto; width: 100%; }
 .geometry-crop { aspect-ratio: 435 / var(--crop-height); border-radius: 8px; overflow: hidden; position: relative; }
 .geometry-crop img { display: block; height: auto; left: calc(-100% * var(--crop-x) / 435); max-width: none; position: absolute; top: calc(-100% * var(--crop-y) / var(--crop-height)); width: calc(100% * 2736 / 435); }
 .geometry-examples figcaption { color: var(--muted); font-size: .78rem; line-height: 1.6; margin: 14px auto 0; max-width: 860px; text-align: center; }
@@ -427,6 +427,6 @@ html { scroll-padding-top: 86px; }
   .disclosure-content { padding: 18px; }
   .geometry-example-grid { gap: 6px; }
   .geometry-example-grid > div > span { font-size: .62rem; }
-  .geometry-crop { border-radius: 4px; }
+  .geometry-example-grid img, .geometry-crop { border-radius: 4px; }
   .geometry-summary { gap: 24px; grid-template-columns: 1fr; }
 }
