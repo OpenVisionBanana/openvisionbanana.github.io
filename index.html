@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Manrope:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="static/styles.css?v=20261103-2">
+  <link rel="stylesheet" href="static/styles.css?v=20261113-1">
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -50,7 +50,7 @@
       <div class="hero-glow hero-glow-right" aria-hidden="true"></div>
       <div class="container hero-grid">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="eyebrow-dot"></span> Preprint · 2026</div>
+          <div class="eyebrow"><span class="eyebrow-dot"></span> arXiv · 2026</div>
           <h1><span class="title-open">Open Vision</span> <span class="title-banana">Banana</span></h1>
           <p class="subtitle">A Fully Open Recipe for<br class="desktop-break"> Generative Visual Perception</p>
 
@@ -75,10 +75,14 @@
           <p class="contribution-note"><sup>*</sup>Equal contribution</p>
 
           <div class="publication-links" aria-label="Project resources">
-            <span class="button button-muted" aria-disabled="true" title="Updated manuscript in preparation">
+            <a class="button button-dark" href="https://arxiv.org/pdf/2611.15844" target="_blank" rel="noopener noreferrer">
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 2h8l4 4v16H6zM14 2v5h5M9 13h6M9 17h6M9 9h2"/></svg>
-              Paper <small>Soon</small>
-            </span>
+              Paper
+            </a>
+            <a class="button button-dark" href="https://arxiv.org/abs/2611.15844" target="_blank" rel="noopener noreferrer">
+              <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 19L19 5M9 5h10v10"/></svg>
+              arXiv
+            </a>
             <a class="button button-dark" href="https://github.com/OpenVisionBanana/OpenVisionBanana" target="_blank" rel="noopener noreferrer">
               <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/></svg>
               Code
@@ -201,9 +205,9 @@
                 <tr data-task-color="semantic"><th scope="row">Semantic segmentation <small>Cityscapes val · mIoU ↑</small></th><td class="ovb-column"><strong><u>75.7</u></strong><small>9B · non-zero-shot · 20-pass vote<br>69.7 mean single pass</small></td><td><strong>69.9</strong></td><td><span>SAM 3 <b>65.2</b></span></td></tr>
                 <tr data-task-color="referring"><th scope="row">Referring segmentation <small>RefCOCOg val (UMD) · cIoU ↑</small></th><td class="ovb-column"><strong>69.2</strong><small>9B · non-zero-shot<br>Original expressions</small></td><td><strong><u>73.8</u></strong></td><td><span>SAM 3 + Gemini 2.5 Pro <b>73.4</b></span><span>HybridGL <b>51.3</b></span></td></tr>
                 <tr data-task-color="reasoning"><th scope="row">Reasoning segmentation <small>ReasonSeg val · gIoU ↑</small></th><td class="ovb-column"><strong>74.6</strong><small>4B · non-zero-shot<br>+ Gemma4 31B</small></td><td><strong><u>79.3</u></strong><small>+ Gemini 2.5 Pro</small></td><td><span>SAM 3 + Gemini 2.5 Pro <b>77.0</b></span><span>SegZero-Qwen2.5-VL-7B <b>62.6</b></span></td></tr>
-                <tr data-task-color="instance"><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>39.6</strong><small>9B · non-zero-shot · 11-pass consensus<br>+ Qwen3-VL-8B presence gate</small></td><td><strong><u>47.5</u></strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
+                <tr data-task-color="instance"><th scope="row">Instance segmentation <small>SA-Co/Gold · cgF1 ↑</small></th><td class="ovb-column"><strong>40.1</strong><small>9B · non-zero-shot · 11-pass consensus<br>+ Qwen3-VL-30B-A3B presence gate</small></td><td><strong><u>47.5</u></strong><small>+ Gemini 3.1 Flash-Lite</small></td><td><span>OWLv2 <b>24.6</b></span><span>DINO-X <b>21.3</b></span></td></tr>
                 <tr data-task-color="depth"><th scope="row">Relative depth <small>NYUv2 · δ₁ (%) ↑</small></th><td class="ovb-column"><strong><u>99.0</u></strong><small>9B · non-zero-shot<br>Per-image disparity-affine alignment</small></td><td><strong>94.8</strong><small>Metric depth</small></td><td><span>Marigold V2 <b>98.0</b></span><span>Lotus-2 <b>97.6</b></span></td></tr>
-                <tr data-task-color="normals"><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong><u>13.51</u></strong><small>9B · non-zero-shot<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
+                <tr data-task-color="normals"><th scope="row">Surface normals <small>NYUv2 · mean error (°) ↓</small></th><td class="ovb-column"><strong><u>13.21</u></strong><small>4B · non-zero-shot<br>Camera-space normals</small></td><td><strong>17.8</strong></td><td><span>Marigold V2 <b>16.6</b></span><span>Lotus-2 <b>16.9</b></span><span>DSINE <b>16.4</b></span></td></tr>
               </tbody>
             </table>
           </div>
@@ -247,7 +251,7 @@
         </ol>
         <div class="scaling-grid">
           <div class="scaling-stat"><span>Cityscapes · 9B · zero-shot</span><strong>65.4 <b>→</b> 74.06</strong><small>mIoU, first pass → peak vote (27, 28, or 30 passes)</small></div>
-          <div class="scaling-stat"><span>COCO-Object · 9B · non-zero-shot</span><strong>45.0 <b>→</b> 59.3</strong><small>mIoU, mean single pass → 90-pass vote</small></div>
+          <div class="scaling-stat"><span>COCO-Object · 9B · non-zero-shot</span><strong>44.9 <b>→</b> 59.3</strong><small>mIoU, first pass → 90-pass vote</small></div>
         </div>
         <div class="scaling-explain">
           <figure><img src="static/images/paper/cityscapes-scaling.webp" alt="Cityscapes mIoU climbs as predictions from more color legends are combined, while individual pass scores stay approximately flat" loading="lazy"><figcaption>Cityscapes repeat sweep · zero-shot models</figcaption></figure>
@@ -268,70 +272,10 @@
           <article class="finding-card"><span class="finding-index">02</span><div class="finding-copy"><span class="finding-factor">Multi-task recipe</span><h3>Balance performance across tasks.</h3><p>More data or longer training can help one task while hurting another. The final recipe balances segmentation, geometry, and retained generative abilities.</p></div></article>
           <article class="finding-card"><span class="finding-index">03</span><div class="finding-copy"><span class="finding-factor">Model adaptation</span><h3>Adapt more of the backbone.</h3><p>Tuning only the last few transformer blocks performs poorly. Strong perception requires adapting a substantial fraction of the backbone.</p></div></article>
         </div>
-        <details class="research-disclosure recipe-disclosure">
-          <summary><span class="disclosure-label">Explore the complete recipe and architecture</span><span class="disclosure-icon" aria-hidden="true">+</span></summary>
-          <div class="disclosure-content">
-            <figure class="paper-figure">
-              <img src="static/images/ovb-overview.webp" alt="Overview of the Open Vision Banana research questions, data, generator, RGB output and decoder" width="6256" height="2195" loading="lazy">
-              <figcaption><strong>The complete recipe.</strong> Public data, target encoding, prompts, model adaptation, and prediction readout.</figcaption>
-            </figure>
-          </div>
-        </details>
-      </div>
-    </section>
-
-    <section class="section geometry-section" id="geometry">
-      <div class="container">
-        <div class="section-heading">
-          <p class="section-kicker">Where the limits show</p>
-          <h2>Geometry is useful, but domain-dependent.</h2>
-          <p>OVB predicts depth and surface orientation through RGB images. Performance varies with the domain and training data.</p>
-        </div>
-        <div class="geometry-summary">
-          <article><h3>Relative depth</h3><p>Recovers relative scene structure on NYUv2 and DIODE, rather than absolute distances in meters.</p></article>
-          <article><h3>Surface normals</h3><p>Competitive results on NYUv2 and Sintel, though predictions can still contain artifacts.</p></article>
-        </div>
-        <figure class="geometry-examples">
-          <div class="geometry-example-row">
-            <h3>Relative depth · NYUv2</h3>
-            <div class="geometry-example-grid">
-              <div><span>Input</span><img src="static/images/paper/geometry/depth/input/depth_nyu_01.png" alt="NYUv2 kitchen sink and cabinets" width="560" height="426" loading="lazy"></div>
-              <div><span>Ground truth</span><img src="static/images/paper/geometry/depth/target/depth_nyu_01.png" alt="Colorized reference depth for the kitchen" width="560" height="426" loading="lazy"></div>
-              <div><span>OVB 9B</span><img src="static/images/paper/geometry/depth/ovb_klein_9b/depth_nyu_01.png" alt="Colorized OVB 9B relative-depth prediction for the kitchen" width="560" height="426" loading="lazy"></div>
-            </div>
-          </div>
-          <div class="geometry-example-row">
-            <h3>Surface normals · ScanNet</h3>
-            <div class="geometry-example-grid">
-              <div><span>Input</span><img src="static/images/paper/geometry/surface_normals/input/normals_scannet_05.png" alt="ScanNet scene with upholstered furniture" width="640" height="480" loading="lazy"></div>
-              <div><span>Ground truth</span><img src="static/images/paper/geometry/surface_normals/target/normals_scannet_05.png" alt="Reference surface normals for the furniture and surrounding floor" width="640" height="480" loading="lazy"></div>
-              <div><span>OVB 9B</span><img src="static/images/paper/geometry/surface_normals/ovb_klein_9b/normals_scannet_05.png" alt="OVB 9B surface-normal prediction for the furniture and surrounding floor" width="640" height="480" loading="lazy"></div>
-            </div>
-          </div>
-          <figcaption>Colors show relative depth or surface orientation.</figcaption>
+        <figure class="paper-figure">
+          <img src="static/images/ovb-overview.webp?v=20261113" alt="Overview of the Open Vision Banana research questions, data, generator, RGB output and decoder" width="3090" height="1050" loading="lazy">
+          <figcaption><strong>The complete recipe.</strong> Public data, target encoding, prompts, model adaptation, prediction readout, and test-time scaling.</figcaption>
         </figure>
-        <div class="geometry-comparisons">
-          <div class="comparison-heading">
-            <h3>Selected geometry results</h3>
-            <p>OVB uses per-image disparity-affine alignment for depth. Published specialist scores use different protocols and training data.</p>
-          </div>
-          <div class="result-table-wrap" role="region" aria-label="Depth and surface-normal benchmark comparisons" tabindex="0">
-            <table class="result-table geometry-table">
-              <caption>Selected geometry comparisons: relative depth on NYUv2 and DIODE, surface normals on NYUv2 and Sintel; protocols may differ</caption>
-              <thead>
-                <tr><th scope="col" rowspan="2">Method</th><th scope="colgroup" colspan="2">Relative depth · δ₁ (%) ↑</th><th scope="colgroup" colspan="2">Surface normals · mean error (°) ↓</th></tr>
-                <tr><th scope="col">NYUv2</th><th scope="col">DIODE</th><th scope="col">NYUv2</th><th scope="col">Sintel</th></tr>
-              </thead>
-              <tbody>
-                <tr><th scope="row">Marigold V2 </th><td>98.0</td><td>97.1</td><td>16.6</td><td>28.7</td></tr>
-                <tr><th scope="row">Lotus-2 </th><td>97.6</td><td>95.5</td><td>16.9</td><td>30.3</td></tr>
-                <tr><th scope="row">DSINE </th><td>—</td><td>—</td><td>16.4</td><td>34.9</td></tr>
-                <tr><th scope="row">Vision Banana </th><td>—</td><td>—</td><td>17.8</td><td>—</td></tr>
-                <tr class="ovb-row"><th scope="row">Open Vision Banana 9B · non-zero-shot</th><td class="selected-score"><strong>99.0</strong></td><td class="selected-score"><strong>94.1</strong></td><td class="selected-score"><strong>13.51</strong></td><td class="selected-score"><strong>28.63</strong></td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -345,9 +289,7 @@
         <div class="release-list">
           <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Model weights</strong></p><a href="https://huggingface.co/FunAILab/Open-Vision-Banana" target="_blank" rel="noopener noreferrer">View models ↗</a></div>
           <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Code repository</strong></p><a href="https://github.com/OpenVisionBanana/OpenVisionBanana" target="_blank" rel="noopener noreferrer">View code ↗</a></div>
-          <div><span class="release-check">→</span><p><strong>Data pipeline</strong></p><em>Planned</em></div>
-          <div><span class="release-check">→</span><p><strong>Evaluation harness</strong></p><em>Planned</em></div>
-          <div><span class="release-check">→</span><p><strong>Updated paper</strong></p><em>Planned</em></div>
+          <div><span class="release-check" aria-hidden="true">↗</span><p><strong>Paper</strong></p><a href="https://arxiv.org/abs/2611.15844" target="_blank" rel="noopener noreferrer">Read on arXiv ↗</a></div>
         </div>
       </div>
     </section>
@@ -366,7 +308,10 @@
   author  = {Jadon, Arpit and Pariza, Valentinos and Ruthardt, Jona and
              Yamada, Ryousuke and Koepke, A. Sophia and Bursuc, Andrei and Asano, Yuki M.},
   year    = {2026},
-  note    = {Manuscript in preparation}
+  eprint  = {2611.15844},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CV},
+  url     = {https://arxiv.org/abs/2611.15844}
 }</code></pre>
         </div>
       </div>
