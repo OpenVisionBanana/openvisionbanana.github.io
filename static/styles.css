@@ -110,6 +110,14 @@ sup { font-size: 0.63em; line-height: 0; }
 .button svg { fill: none; height: 18px; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 1.8; width: 18px; }
 .button-dark { background: var(--ink); color: white; }
 .button-dark:hover { background: #36352f; transform: translateY(-1px); }
+/* Resource buttons in their sources' colours, as on the Hugging Face demo: arXiv red, GitHub near-black, Hugging Face yellow. */
+.button svg.icon-fill { fill: currentColor; stroke: none; }
+.button img { height: 19px; width: auto; }
+.button-paper, .button-code, .button-hf { transition: transform 160ms ease, filter 160ms ease; }
+.button-paper:hover, .button-code:hover, .button-hf:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.button-paper { background: #b31b1b; color: #ffffff; }
+.button-code { background: #24292f; color: #ffffff; }
+.button-hf { background: #ffd21e; color: var(--ink); }
 .button-muted { background: #f2f0e8; border-color: #e0ded5; color: #706e66; cursor: default; }
 .button small { background: #dddad0; border-radius: 99px; font-size: .58rem; letter-spacing: .05em; padding: 3px 6px; text-transform: uppercase; }
 
